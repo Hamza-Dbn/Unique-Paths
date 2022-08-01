@@ -15,3 +15,19 @@ var uniquePaths = function(m, n) {
     }
     
 };
+
+
+// A solution with dynamic programming memoization technic:
+
+var uniquePaths = function(m, n, memo = {}) {
+    if (n == 1 || m == 1) {
+        return 1;
+    }
+    if (!memo[[n,m]]) {
+        
+        memo[[n,m]] = uniquePaths(n-1, m, memo) + uniquePaths(n, m-1, memo)
+    }
+    
+    return memo[[n,m]];
+
+};
